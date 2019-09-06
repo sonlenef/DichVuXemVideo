@@ -5,7 +5,7 @@
 
 **2. Các chức năng:**
 
-* Đăng ký tài khoảng
+* Đăng ký tài khoản
 * Phân quyền
 * Đăng nhập, đăng xuất
 * Thêm, xoá, sửa thông tin người dùng
