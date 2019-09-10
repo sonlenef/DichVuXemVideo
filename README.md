@@ -2,7 +2,6 @@
 **1. Mô tả:**
 
 * Dịch vụ xem video là dịch vụ cho phép người truy cập trang web đăng nhập để xem các video bài giảng, video demo trên trang web.
-
 * Cho phép admin đăng, chỉnh sửa video trên web.
 
 **2. Các chức năng:**
@@ -24,4 +23,3 @@
 
 * HTML/CSS/JAVASCRIP
 * PHP
-* WEB API/ RESTFUL API (firebase)
