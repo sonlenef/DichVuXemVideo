@@ -3,9 +3,11 @@
 
 * Dịch vụ xem video là dịch vụ cho phép người truy cập trang web đăng nhập để xem các video bài giảng, video demo trên trang web.
 
-**2. Chức năng:**
+* Cho phép admin đăng, chỉnh sửa video trên web.
 
-* Đăng ký tài khoảng
+**2. Các chức năng:**
+
+* Đăng ký tài khoản
 * Phân quyền
 * Đăng nhập, đăng xuất
 * Thêm, xoá, sửa thông tin người dùng
@@ -22,3 +24,4 @@
 
 * HTML/CSS/JAVASCRIP
 * PHP
+* WEB API/ RESTFUL API (firebase)
