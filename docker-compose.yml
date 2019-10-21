@@ -55,4 +55,5 @@ services:
 
 networks:
   backend:
-    name: backend-network
+    driver: bridge
+    
