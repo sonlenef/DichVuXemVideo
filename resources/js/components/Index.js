@@ -11,20 +11,11 @@ export default class Index extends Component {
                     <div className="row">
                         <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
                             <div className="container">
-                                <a className="navbar-brand js-scroll-trigger" href="#page-top">Start Bootstrap</a>
+                                <a className="navbar-brand js-scroll-trigger" href="#">Dịch Vụ Xem Video</a>
                                 <div className="collapse navbar-collapse" id="navbarResponsive">
                                     <ul className="navbar-nav ml-auto">
                                         <li className="nav-item">
-                                            <Link className="nav-link js-scroll-trigger" to={'/'}>Home</Link>
-                                        </li>
-                                        <li className="nav-item">
-                                            <Link className="nav-link js-scroll-trigger" to={'/about'}>About</Link>
-                                        </li>
-                                        <li className="nav-item">
-                                            <Link className="nav-link js-scroll-trigger" to={'/product'}>Product</Link>
-                                        </li>
-                                        <li className="nav-item">
-                                            <Link className="nav-link js-scroll-trigger" to={'/topic'}>Topic</Link>
+                                            <Link className="nav-link js-scroll-trigger" to={'/login'}>Login</Link>
                                         </li>
                                     </ul>
                                 </div>
