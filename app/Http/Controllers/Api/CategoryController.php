@@ -30,9 +30,17 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        // $product = Product::create($request->all());
+        $name = $request->name;
+        $description = $request->description;
+        $adminid = $request->adminid;
 
-        // return new ProductResource($product);
+        $category = Category::create([
+            'name' => $name,
+            'description' => $description,
+            'adminid' => $adminid
+            ]);
+
+        return new CategoryResource($category);
     }
 
     /**
@@ -43,8 +51,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
-        return new ProductResource($category);
+        return new CategoryResource($category);
     }
 
     /**
@@ -56,9 +63,7 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
-        // return $product->update($request->all());
-        // return $product->update($request->all());
+        return $category->update($request->all());
     }
 
     /**
@@ -69,7 +74,6 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
-        // $product->delete();
+        $category->delete();
     }
 }
