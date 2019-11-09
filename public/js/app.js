@@ -73250,7 +73250,23 @@ function (_Component) {
   _createClass(Login, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Welcome to Login!"));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        className: "boxLogin"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Login"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        name: "",
+        placeholder: "Username",
+        required: true
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "password",
+        name: "",
+        placeholder: "Password",
+        required: true
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "submit",
+        name: "",
+        placeholder: "Login"
+      }));
     }
   }]);
 
