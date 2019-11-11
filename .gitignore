@@ -10,3 +10,6 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+run/var/ibdata1
+run/var/ib_logfile0
+run/var/ibtmp1

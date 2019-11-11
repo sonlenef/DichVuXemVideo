@@ -14,12 +14,6 @@ class User extends JsonResource
      */
     public function toArray($request)
     {
-        // return parent::toArray($request);
-        return [
-            'masv' => $this->masv,
-            'name' => $this->name,
-            'brithday' => $this->brithday,
-            'class' => $this->class,
-        ];
+        return parent::toArray($request);
     }
 }
