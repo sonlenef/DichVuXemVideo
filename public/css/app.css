@@ -2,17 +2,18 @@
     width: 300px;
     padding: 50px;
     position: absolute;
-    top: 50%;
+    box-shadow: rgba(0,0,0,0.2) 0px 1px 3px;
+    top: 40%;
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%);
-    background: rgba(0,0,0,0.7);
+    background: white;
     text-align: center;
     border-radius: 5px;
 }
 .boxLogin h1{
     font-family: Comic Sans MS;
-    color: white;
+    color: rgba(0, 0, 0, 0.9);
     text-transform: uppercase;
     font-weight: 500;
     padding-bottom: 20px;
@@ -27,7 +28,6 @@
     padding: 10px 10px;
     width: 200px;
     outline: none;
-    color: white;
     border-radius: 24px;
     -webkit-transition: 0.25s;
     transition: 0.25s;
@@ -45,7 +45,6 @@
     border: 2px solid #2ecc71;
     padding: 10px 40px;
     outline: none;
-    color: white;
     border-radius: 24px;
     -webkit-transition: 0.25s;
     transition: 0.25s;
