@@ -5,7 +5,7 @@ class Login extends Component {
         return (
             <form className="boxLogin">
                 <h1>Login</h1>
-                <input type="text" name="" placeholder="Username" required/>
+                <input type="text" name="" placeholder="Email" required/>
                 <input type="password" name="" placeholder="Password" required/>
                 <input type="submit" name="" placeholder="Login"/>
             </form>

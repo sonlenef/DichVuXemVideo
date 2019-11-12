@@ -9,7 +9,7 @@ export default class Index extends Component {
             <HashRouter>
                 <div className="container">
                     <div className="row">
-                        <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+                        <nav className="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm" id="mainNav">
                             <div className="container">
                                 <a className="navbar-brand js-scroll-trigger" href="#">Dịch Vụ Xem Video</a>
                                 <div className="collapse navbar-collapse" id="navbarResponsive">
