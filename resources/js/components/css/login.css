@@ -1,6 +1,6 @@
 .boxLogin{
     width: 300px;
-    padding: 50px;
+    padding: 60px 50px 0 50px;
     position: absolute;
     box-shadow: rgba(0,0,0,0.2) 0px 1px 3px;
     top: 40%;
@@ -10,18 +10,17 @@
     text-align: center;
     border-radius: 5px;
 }
-.boxLogin h1{
+.boxLogin h2{
     font-family: Comic Sans MS;
     color: rgba(0, 0, 0, 0.9);
     text-transform: uppercase;
     font-weight: 500;
-    padding-bottom: 20px;
+    padding-bottom: 30px;
 }
 .boxLogin input[type = "text"], .boxLogin input[type = "password"]{
     border: 0;
     background: none;
     display: block;
-    margin: 20px auto;
     text-align: center;
     border: 2px solid #3498db;
     padding: 10px 10px;
@@ -34,12 +33,14 @@
     width: 200px;
     border-color: #2ecc71;
 }
-.boxLogin input[type = "submit"]{
+.boxLogin .btn-primary{
     border: 0;
     background: none;
     display: block;
-    margin: 20px auto;
+    margin: 12px auto;
+    margin-bottom: 0px;
     text-align: center;
+    color: #3498db;
     border: 2px solid #2ecc71;
     padding: 10px 40px;
     outline: none;
@@ -47,6 +48,33 @@
     transition: 0.25s;
     cursor: pointer;
 }
-.boxLogin input[type = "submit"]:hover{
+.boxLogin .btn-primary:hover{
     background: #2ecc71;
+}
+.box-error {
+    height: 15px;
+}
+
+.box-error .help-block {
+    color: red;
+}
+
+.login-loading{
+    height: 12px;
+}
+
+.box-error-login {
+    height: 80px;
+}
+
+.form-group-login {
+    margin-bottom: 8px;
+}
+
+.alert-login{
+    position: relative;
+    padding: 0.5rem 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
 }

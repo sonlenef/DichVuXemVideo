@@ -12,4 +12,17 @@ require('./bootstrap');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-require('./components/Index');
+// require('./components/Index');
+import React from 'react';
+import { render } from 'react-dom';
+
+import { App } from './App/index';
+
+// setup fake backend
+import { configureFakeBackend } from './_helpers';
+configureFakeBackend();
+
+render(
+    <App />,
+    document.getElementById('index')
+);
