@@ -1,0 +1,84 @@
+.boxLogin{
+    width: 300px;
+    padding: 60px 50px 0 50px;
+    position: absolute;
+    box-shadow: rgba(0,0,0,0.2) 0px 1px 3px;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    text-align: center;
+    border-radius: 5px;
+}
+.boxLogin h2{
+    font-family: Comic Sans MS;
+    color: rgba(0, 0, 0, 0.9);
+    text-transform: uppercase;
+    font-weight: 500;
+    padding-bottom: 30px;
+}
+.boxLogin input[type = "text"], .boxLogin input[type = "password"]{
+    border: 0;
+    background: none;
+    display: block;
+    text-align: center;
+    border: 2px solid #3498db;
+    padding: 10px 10px;
+    width: 200px;
+    outline: none;
+    border-radius: 24px;
+    transition: 0.25s;
+}
+.boxLogin input[type = "text"]:focus, .boxLogin input[type = "password"]:focus{
+    width: 200px;
+    border-color: #2ecc71;
+}
+.boxLogin .btn-primary{
+    border: 0;
+    background: none;
+    display: block;
+    margin: 12px auto;
+    margin-bottom: 0px;
+    text-align: center;
+    color: #3498db;
+    border: 2px solid #2ecc71;
+    padding: 10px 40px;
+    outline: none;
+    border-radius: 24px;
+    transition: 0.25s;
+    cursor: pointer;
+}
+.boxLogin .btn-primary:hover{
+    background: #2ecc71;
+}
+.box-error {
+    height: 15px;
+}
+
+.box-error .help-block {
+    color: red;
+}
+
+.login-loading{
+    height: 12px;
+}
+
+.box-error-login {
+    height: 80px;
+}
+
+.form-group-login {
+    margin-bottom: 8px;
+}
+
+.alert-login{
+    position: relative;
+    padding: 0.5rem 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+}
+
+.home-content {
+    margin-top: 70px;
+}
