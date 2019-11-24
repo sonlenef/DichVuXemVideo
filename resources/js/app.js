@@ -19,8 +19,8 @@ import { render } from 'react-dom';
 import { App } from './App/index';
 
 // setup fake backend
-import { configureFakeBackend } from './_helpers';
-configureFakeBackend();
+// import { configureFakeBackend } from './_helpers';
+// configureFakeBackend();
 
 render(
     <App />,

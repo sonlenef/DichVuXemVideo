@@ -73005,8 +73005,7 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(HomePage).call(this, props));
     _this.state = {
-      user: {},
-      users: []
+      user: {}
     };
     return _this;
   }
@@ -73017,32 +73016,47 @@ function (_React$Component) {
       var _this2 = this;
 
       this.setState({
-        user: JSON.parse(localStorage.getItem('user')),
-        users: {
+        user: {
           loading: true
         }
       });
-      _services__WEBPACK_IMPORTED_MODULE_2__["userService"].getAll().then(function (users) {
+      _services__WEBPACK_IMPORTED_MODULE_2__["userService"].getUser().then(function (user) {
         return _this2.setState({
-          users: users
+          user: user
         });
       });
     }
   }, {
     key: "render",
     value: function render() {
-      var _this$state = this.state,
-          user = _this$state.user,
-          users = _this$state.users;
+      var user = this.state.user;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-md-6 col-md-offset-3"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Hi ", user.firstName, "!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "You're logged in with React & Basic HTTP Authentication!!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Users from secure api end point:"), users.loading && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("em", null, "Loading users..."), users.length && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, users.map(function (user, index) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-          key: user.id
-        }, user.firstName + ' ' + user.lastName);
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/login"
-      }, "Logout")));
+        className: "container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
+        className: "navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm",
+        id: "mainNav"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        className: "navbar-brand js-scroll-trigger",
+        href: "#"
+      }, "D\u1ECBch V\u1EE5 Xem Video"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "collapse navbar-collapse",
+        id: "navbarResponsive"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "navbar-nav ml-auto"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "nav-item"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        className: "nav-link js-scroll-trigger",
+        to: '/login'
+      }, "Logout"))))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-md-6 col-md-offset-3 home-content"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Hi ", user.name, "!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "You're logged in with React & Basic HTTP Authentication!!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "User from secure api end point:"), user.loading && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("em", null, "Loading user..."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        key: user.id
+      }, user.email))));
     }
   }]);
 
@@ -73118,7 +73132,7 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(LoginPage).call(this, props));
     _services__WEBPACK_IMPORTED_MODULE_1__["userService"].logout();
     _this.state = {
-      username: '',
+      email: '',
       password: '',
       submitted: false,
       loading: false,
@@ -73147,18 +73161,18 @@ function (_React$Component) {
         submitted: true
       });
       var _this$state = this.state,
-          username = _this$state.username,
+          email = _this$state.email,
           password = _this$state.password,
           returnUrl = _this$state.returnUrl; // stop here if form is invalid
 
-      if (!(username && password)) {
+      if (!(email && password)) {
         return;
       }
 
       this.setState({
         loading: true
       });
-      _services__WEBPACK_IMPORTED_MODULE_1__["userService"].login(username, password).then(function (user) {
+      _services__WEBPACK_IMPORTED_MODULE_1__["userService"].login(email, password).then(function (user) {
         var _ref = _this2.props.location.state || {
           from: {
             pathname: "/"
@@ -73178,7 +73192,7 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       var _this$state2 = this.state,
-          username = _this$state2.username,
+          email = _this$state2.email,
           password = _this$state2.password,
           submitted = _this$state2.submitted,
           loading = _this$state2.loading,
@@ -73189,19 +73203,19 @@ function (_React$Component) {
         name: "form",
         onSubmit: this.handleSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: 'form-group-login' + (submitted && !username ? ' has-error' : '')
+        className: 'form-group-login' + (submitted && !email ? ' has-error' : '')
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         className: "form-control",
-        name: "username",
+        name: "email",
         placeholder: "Email",
-        value: username,
+        value: email,
         onChange: this.handleChange
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "box-error"
-      }, submitted && !username && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, submitted && !email && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "help-block"
-      }, "Username is required"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Email is required"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: 'form-group-login' + (submitted && !password ? ' has-error' : '')
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "password",
@@ -73267,11 +73281,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../_services */ "./resources/js/_services/index.js");
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
 
 
 
@@ -73281,7 +73297,7 @@ var PrivateRoute = function PrivateRoute(_ref) {
 
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], _extends({}, rest, {
     render: function render(props) {
-      return localStorage.getItem('user') ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Component, props) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Redirect"], {
+      return localStorage.getItem('jwt') ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Component, props) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Redirect"], {
         to: {
           pathname: '/login',
           state: {
@@ -73321,13 +73337,15 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "authHeader", function() { return authHeader; });
+var TOKEN_KEY = 'jwt';
 function authHeader() {
   // return authorization header with basic auth credentials
-  var user = JSON.parse(localStorage.getItem('user'));
+  var data = JSON.parse(localStorage.getItem(TOKEN_KEY));
 
-  if (user && user.authdata) {
+  if (data.token) {
     return {
-      'Authorization': 'Basic ' + user.authdata
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Authorization': 'Bearer ' + data.token
     };
   } else {
     return {};
@@ -73336,112 +73354,17 @@ function authHeader() {
 
 /***/ }),
 
-/***/ "./resources/js/_helpers/fake-backend.js":
-/*!***********************************************!*\
-  !*** ./resources/js/_helpers/fake-backend.js ***!
-  \***********************************************/
-/*! exports provided: configureFakeBackend */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "configureFakeBackend", function() { return configureFakeBackend; });
-function configureFakeBackend() {
-  var users = [{
-    id: 1,
-    username: 'test',
-    password: 'test',
-    firstName: 'Test',
-    lastName: 'User'
-  }];
-  var realFetch = window.fetch;
-
-  window.fetch = function (url, opts) {
-    return new Promise(function (resolve, reject) {
-      // wrap in timeout to simulate server api call
-      setTimeout(function () {
-        // authenticate
-        if (url.endsWith('/users/authenticate') && opts.method === 'POST') {
-          // get parameters from post request
-          var params = JSON.parse(opts.body); // find if any user matches login credentials
-
-          var filteredUsers = users.filter(function (user) {
-            return user.username === params.username && user.password === params.password;
-          });
-
-          if (filteredUsers.length) {
-            // if login details are valid return user details
-            var user = filteredUsers[0];
-            var responseJson = {
-              id: user.id,
-              username: user.username,
-              firstName: user.firstName,
-              lastName: user.lastName
-            };
-            resolve({
-              ok: true,
-              text: function text() {
-                return Promise.resolve(JSON.stringify(responseJson));
-              }
-            });
-          } else {
-            // else return error
-            reject('Username or password is incorrect');
-          }
-
-          return;
-        } // get users
-
-
-        if (url.endsWith('/users') && opts.method === 'GET') {
-          // check for fake auth token in header and return users if valid, this security 
-          // is implemented server side in a real application
-          if (opts.headers && opts.headers.Authorization === "Basic ".concat(window.btoa('test:test'))) {
-            resolve({
-              ok: true,
-              text: function text() {
-                return Promise.resolve(JSON.stringify(users));
-              }
-            });
-          } else {
-            // return 401 not authorised if token is null or invalid
-            resolve({
-              status: 401,
-              text: function text() {
-                return Promise.resolve();
-              }
-            });
-          }
-
-          return;
-        } // pass through any requests not handled above
-
-
-        realFetch(url, opts).then(function (response) {
-          return resolve(response);
-        });
-      }, 500);
-    });
-  };
-}
-
-/***/ }),
-
 /***/ "./resources/js/_helpers/index.js":
 /*!****************************************!*\
   !*** ./resources/js/_helpers/index.js ***!
   \****************************************/
-/*! exports provided: configureFakeBackend, authHeader */
+/*! exports provided: authHeader */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _fake_backend__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./fake-backend */ "./resources/js/_helpers/fake-backend.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "configureFakeBackend", function() { return _fake_backend__WEBPACK_IMPORTED_MODULE_0__["configureFakeBackend"]; });
-
-/* harmony import */ var _auth_header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./auth-header */ "./resources/js/_helpers/auth-header.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "authHeader", function() { return _auth_header__WEBPACK_IMPORTED_MODULE_1__["authHeader"]; });
-
+/* harmony import */ var _auth_header__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./auth-header */ "./resources/js/_helpers/auth-header.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "authHeader", function() { return _auth_header__WEBPACK_IMPORTED_MODULE_0__["authHeader"]; });
 
 
 
@@ -73475,47 +73398,55 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "userService", function() { return userService; });
 /* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../_helpers */ "./resources/js/_helpers/index.js");
 
+var TOKEN_KEY = 'jwt';
 var userService = {
   login: login,
   logout: logout,
-  getAll: getAll
+  getUser: getUser
 };
 
-function login(username, password) {
+function login(email, password) {
   var requestOptions = {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      username: username,
+      email: email,
       password: password
     })
   };
-  return fetch("/users/authenticate", requestOptions).then(handleResponse).then(function (user) {
+  return fetch("/api/login", requestOptions).then(handleResponse).then(function (data) {
     // login successful if there's a user in the response
-    if (user) {
+    if (data.token) {
       // store user details and basic auth credentials in local storage 
       // to keep user logged in between page refreshes
-      user.authdata = window.btoa(username + ':' + password);
-      localStorage.setItem('user', JSON.stringify(user));
+      localStorage.setItem(TOKEN_KEY, JSON.stringify(data));
     }
 
-    return user;
+    return data;
   });
 }
 
 function logout() {
   // remove user from local storage to log user out
-  localStorage.removeItem('user');
+  // let data = JSON.parse(localStorage.getItem(TOKEN_KEY)).token;
+  localStorage.removeItem(TOKEN_KEY); // if(data){
+  //     const requestOptions = {
+  //         method: 'POST',
+  //         headers: authHeader(),
+  //         body: JSON.stringify({ token })
+  //     };
+  //     return fetch(`/api/logout`, requestOptions).then(handleResponse);
+  // }
 }
 
-function getAll() {
+function getUser() {
   var requestOptions = {
     method: 'GET',
     headers: Object(_helpers__WEBPACK_IMPORTED_MODULE_0__["authHeader"])()
   };
-  return fetch("/users", requestOptions).then(handleResponse);
+  return fetch("/api/auth", requestOptions).then(handleResponse);
 }
 
 function handleResponse(response) {
@@ -73553,7 +73484,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _App_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./App/index */ "./resources/js/App/index.js");
-/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_helpers */ "./resources/js/_helpers/index.js");
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes React and other helpers. It's a great starting point while
@@ -73571,9 +73501,9 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
  // setup fake backend
+// import { configureFakeBackend } from './_helpers';
+// configureFakeBackend();
 
-
-Object(_helpers__WEBPACK_IMPORTED_MODULE_3__["configureFakeBackend"])();
 Object(react_dom__WEBPACK_IMPORTED_MODULE_1__["render"])(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_App_index__WEBPACK_IMPORTED_MODULE_2__["App"], null), document.getElementById('index'));
 
 /***/ }),

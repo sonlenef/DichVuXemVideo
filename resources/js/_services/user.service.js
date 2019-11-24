@@ -1,45 +1,54 @@
 import { authHeader } from '../_helpers';
+const TOKEN_KEY = 'jwt';
 
 export const userService = {
     login,
     logout,
-    getAll
+    getUser
 };
 
-function login(username, password) {
+function login(email, password) {
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password })
+        body: JSON.stringify({ email, password })
     };
 
-    return fetch(`/users/authenticate`, requestOptions)
+    return fetch(`/api/login`, requestOptions)
         .then(handleResponse)
-        .then(user => {
+        .then(data => {
             // login successful if there's a user in the response
-            if (user) {
+            if (data.token) {
                 // store user details and basic auth credentials in local storage 
                 // to keep user logged in between page refreshes
-                user.authdata = window.btoa(username + ':' + password);
-                localStorage.setItem('user', JSON.stringify(user));
+                localStorage.setItem(TOKEN_KEY, JSON.stringify(data));
             }
 
-            return user;
+            return data;
         });
 }
 
 function logout() {
     // remove user from local storage to log user out
-    localStorage.removeItem('user');
+    // let data = JSON.parse(localStorage.getItem(TOKEN_KEY)).token;
+    localStorage.removeItem(TOKEN_KEY);
+    // if(data){
+    //     const requestOptions = {
+    //         method: 'POST',
+    //         headers: authHeader(),
+    //         body: JSON.stringify({ token })
+    //     };
+    //     return fetch(`/api/logout`, requestOptions).then(handleResponse);
+    // }
 }
 
-function getAll() {
+function getUser() {
     const requestOptions = {
         method: 'GET',
         headers: authHeader()
     };
 
-    return fetch(`/users`, requestOptions).then(handleResponse);
+    return fetch(`/api/auth`, requestOptions).then(handleResponse);
 }
 
 function handleResponse(response) {

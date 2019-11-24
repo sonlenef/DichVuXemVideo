@@ -9,7 +9,7 @@ class LoginPage extends React.Component {
         userService.logout();
 
         this.state = {
-            username: '',
+            email: '',
             password: '',
             submitted: false,
             loading: false,
@@ -29,15 +29,15 @@ class LoginPage extends React.Component {
         e.preventDefault();
 
         this.setState({ submitted: true });
-        const { username, password, returnUrl } = this.state;
+        const { email, password, returnUrl } = this.state;
 
         // stop here if form is invalid
-        if (!(username && password)) {
+        if (!(email && password)) {
             return;
         }
 
         this.setState({ loading: true });
-        userService.login(username, password)
+        userService.login(email, password)
             .then(
                 user => {
                     const { from } = this.props.location.state || { from: { pathname: "/" } };
@@ -48,16 +48,16 @@ class LoginPage extends React.Component {
     }
 
     render() {
-        const { username, password, submitted, loading, error } = this.state;
+        const { email, password, submitted, loading, error } = this.state;
         return (
             <div className="boxLogin">
                 <h2>Login</h2>
                 <form name="form" onSubmit={this.handleSubmit}>
-                    <div className={'form-group-login' + (submitted && !username ? ' has-error' : '')}>
-                        <input type="text" className="form-control" name="username" placeholder="Email" value={username} onChange={this.handleChange} />
+                    <div className={'form-group-login' + (submitted && !email ? ' has-error' : '')}>
+                        <input type="text" className="form-control" name="email" placeholder="Email" value={email} onChange={this.handleChange} />
                         <div className="box-error">
-                            {submitted && !username &&
-                                <div className="help-block">Username is required</div>
+                            {submitted && !email &&
+                                <div className="help-block">Email is required</div>
                             }
                         </div>
                     </div>

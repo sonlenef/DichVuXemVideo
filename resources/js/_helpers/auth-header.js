@@ -1,9 +1,11 @@
+const TOKEN_KEY = 'jwt';
 export function authHeader() {
     // return authorization header with basic auth credentials
-    let user = JSON.parse(localStorage.getItem('user'));
+    let data = JSON.parse(localStorage.getItem(TOKEN_KEY));
 
-    if (user && user.authdata) {
-        return { 'Authorization': 'Basic ' + user.authdata };
+    if (data.token) {
+        return { 'Content-Type': 'application/x-www-form-urlencoded',
+            'Authorization': 'Bearer ' + data.token };
     } else {
         return {};
     }

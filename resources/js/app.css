@@ -78,3 +78,7 @@
     border: 1px solid transparent;
     border-radius: 0.25rem;
 }
+
+.home-content {
+    margin-top: 70px;
+}
