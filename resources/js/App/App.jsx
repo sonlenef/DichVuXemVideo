@@ -8,7 +8,7 @@ import { LoginPage } from '../LoginPage';
 class App extends React.Component {
     render() {
         return (
-                <div className="container">
+                <div>
                         <Router>
                             <div>
                                 <PrivateRoute exact path="/" component={HomePage} />
