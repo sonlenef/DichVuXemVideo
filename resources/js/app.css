@@ -254,3 +254,69 @@ section.blog-post .scroll-bar{
 	0%{transform: translateY(0);}
 	100%{transform: translateY(10px);}
 }
+
+/* Content */
+.content-display{
+    position: absolute;
+    height: 390px;
+    width: 840px;
+}
+
+.content-display .list-item{
+    width: 200px;
+    height: 390px;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.content-display .list-item ul{
+    width: 200px;
+    height: 390px;
+    overflow: auto;
+}
+
+.content-display .img-content{
+    object-fit: cover;
+    width: 640px;
+    height: 390px;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.content-display img.img-content{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.content-display div.img-content{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.content-display div.list-item{
+    position: absolute;
+    top: 0px;
+}
+
+.list-item ul li button{
+    width: 200px;
+    background: none;
+    color: #fff;
+    border: none;
+    outline: none;
+    transition: 0.25s;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.list-item ul li button:hover{
+    width: 200px;
+    background: #ff0;
+    color: #000;
+    border: none;
+    outline: none;
+    transition: 0.25s;
+    cursor: pointer;
+    padding: 10px;
+}
+
