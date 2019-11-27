@@ -80,7 +80,7 @@ class LoginPage extends React.Component {
                         </div>
                         <div className="box-error-login">
                             {error &&
-                                <div className={'alert-login alert-danger'}>{error}</div>
+                                <div className={'alert-login alert-danger'}>Username or password is incorrect</div>
                             }
                         </div>
                     </form>

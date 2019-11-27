@@ -67444,7 +67444,7 @@ if (false) {} else {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -74657,12 +74657,38 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(HomePage).call(this, props));
     _this.state = {
-      user: {}
+      user: {},
+      show_youtube_1: {},
+      show_youtube_2: {}
     };
     return _this;
   }
 
   _createClass(HomePage, [{
+    key: "see_youtube",
+    value: function see_youtube() {
+      this.setState({
+        show_youtube_2: false
+      });
+      this.state.show_youtube_1 ? this.setState({
+        show_youtube_1: false
+      }) : this.setState({
+        show_youtube_1: true
+      });
+    }
+  }, {
+    key: "see_youtube_2",
+    value: function see_youtube_2() {
+      this.setState({
+        show_youtube_1: false
+      });
+      this.state.show_youtube_2 ? this.setState({
+        show_youtube_2: false
+      }) : this.setState({
+        show_youtube_2: true
+      });
+    }
+  }, {
     key: "componentDidMount",
     value: function componentDidMount() {
       var _this2 = this;
@@ -74677,10 +74703,18 @@ function (_React$Component) {
           user: user
         });
       });
+      this.setState({
+        show_youtube_1: false
+      });
+      this.setState({
+        show_youtube_2: false
+      });
     }
   }, {
     key: "render",
     value: function render() {
+      var _this3 = this;
+
       var user = this.state.user;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row"
@@ -74698,6 +74732,11 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "navbar-nav ml-auto"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "nav-item"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "#",
+        className: "nav-link js-scroll-trigger"
+      }, user.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "nav-item"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         className: "nav-link js-scroll-trigger",
@@ -74737,9 +74776,60 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null)))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "main-content",
         id: "body-acoustic"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "content-display"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "list-item"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "navbar-nav ml-auto"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: function onClick() {
+          return _this3.see_youtube();
+        }
+      }, "1 Ph\xFAt")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: function onClick() {
+          return _this3.see_youtube();
+        }
+      }, "N\u01B0\u1EDBc M\u1EAFt Em Lau B\u1EB1ng T\xECnh Y\xEAu M\u1EDBi")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: function onClick() {
+          return _this3.see_youtube();
+        }
+      }, "1 Ph\xFAt")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: function onClick() {
+          return _this3.see_youtube();
+        }
+      }, "N\u01B0\u1EDBc M\u1EAFt Em Lau B\u1EB1ng T\xECnh Y\xEAu M\u1EDBi")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: function onClick() {
+          return _this3.see_youtube();
+        }
+      }, "1 Ph\xFAt")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: function onClick() {
+          return _this3.see_youtube();
+        }
+      }, "N\u01B0\u1EDBc M\u1EAFt Em Lau B\u1EB1ng T\xECnh Y\xEAu M\u1EDBi")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: function onClick() {
+          return _this3.see_youtube();
+        }
+      }, "1 Ph\xFAt")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: function onClick() {
+          return _this3.see_youtube();
+        }
+      }, "N\u01B0\u1EDBc M\u1EAFt Em Lau B\u1EB1ng T\xECnh Y\xEAu M\u1EDBi")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: function onClick() {
+          return _this3.see_youtube();
+        }
+      }, "1 Ph\xFAt")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: function onClick() {
+          return _this3.see_youtube();
+        }
+      }, "N\u01B0\u1EDBc M\u1EAFt Em Lau B\u1EB1ng T\xECnh Y\xEAu M\u1EDBi")))), this.state.show_youtube_1 ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "img-content"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_services_YouTubePlayer__WEBPACK_IMPORTED_MODULE_3__["YouTubePlayer"], {
-        videoId: "dLQe4qEfVJw"
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+        videoId: "GQ4F9k4USfA"
+      })) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "img-content",
+        src: "/images/acoustic.jpg"
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "blog-post",
         id: "indie"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -74765,9 +74855,28 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null)))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "main-content",
         id: "body-indie"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "content-display"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "list-item"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "navbar-nav ml-auto"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: function onClick() {
+          return _this3.see_youtube_2();
+        }
+      }, "1 Ph\xFAt")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: function onClick() {
+          return _this3.see_youtube_2();
+        }
+      }, "N\u01B0\u1EDBc M\u1EAFt Em Lau B\u1EB1ng T\xECnh Y\xEAu M\u1EDBi")))), this.state.show_youtube_2 ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "img-content"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_services_YouTubePlayer__WEBPACK_IMPORTED_MODULE_3__["YouTubePlayer"], {
         videoId: "EUEUZDV-in0"
-      })))));
+      })) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "img-content",
+        src: "/images/indie.jpg"
+      }))))));
     }
   }]);
 
@@ -74954,7 +75063,7 @@ function (_React$Component) {
         className: "box-error-login"
       }, error && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: 'alert-login alert-danger'
-      }, error)))));
+      }, "Username or password is incorrect")))));
     }
   }]);
 
@@ -75132,7 +75241,7 @@ function (_React$Component) {
     key: "videoOnReady",
     value: function videoOnReady(event) {
       // access to player in all event handlers via event.target
-      event.target.pauseVideo();
+      event.target.playVideoAt(50);
       console.log(event.target);
     }
   }, {
@@ -75166,7 +75275,7 @@ function (_React$Component) {
 /*!*****************************************!*\
   !*** ./resources/js/_services/index.js ***!
   \*****************************************/
-/*! exports provided: YouTubePlayer, userService */
+/*! exports provided: userService, YouTubePlayer */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
