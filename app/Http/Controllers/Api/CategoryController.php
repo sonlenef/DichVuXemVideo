@@ -4,11 +4,13 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Response;
 use App\Models\User;
 use App\Http\Resources\Category as CategoryResource;
+use App\Http\Resources\Post as PostResource;
 
 class CategoryController extends Controller
 {
@@ -49,8 +51,9 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show($id)
     {
+        $category = Category::find($id);
         return new CategoryResource($category);
     }
 
@@ -76,4 +79,40 @@ class CategoryController extends Controller
     {
         $category->delete();
     }
+
+// Post
+
+    public function getCategoryPost($id)
+    {
+        $post = Post::where("category_id", $id)->take(10)->get();
+        return PostResource::collection($post);
+    }
+
+    public function getPost(Post $post)
+    {
+        return new PostResource($post);
+    }
+
+    public function createPost($id, Request $request)
+    {
+        $user = Auth::user();
+        if($user->role == 'admin'){
+            $post = Post::create($request->all());
+    
+            return new PostResource($post);
+        }
+        return response()->json([
+            'status' => 'error'
+        ], Response::HTTP_BAD_REQUEST);
+    }
+
+    // public function updatePost(Request $request, Post $post)
+    // {
+    //     return $post->update($request->all());
+    // }
+
+    // public function destroyPost(Post $post)
+    // {
+    //     $post->delete();
+    // }
 }

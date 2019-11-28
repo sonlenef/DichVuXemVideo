@@ -4,7 +4,11 @@ const TOKEN_KEY = 'jwt';
 export const userService = {
     login,
     logout,
-    getUser
+    getUser,
+    getAllCategory,
+    getCategory,
+    getCategoryPosts,
+    getPosts
 };
 
 function login(email, password) {
@@ -51,6 +55,46 @@ function getUser() {
     return fetch(`/api/auth`, requestOptions).then(handleResponse);
 }
 
+function getAllCategory()
+{
+    const requestOptions = {
+        method: 'GET',
+        headers: authHeader()
+    };
+
+    return fetch(`/api/category`, requestOptions).then(handleResponse);
+}
+
+function getCategory(id)
+{
+    const requestOptions = {
+        method: 'GET',
+        headers: authHeader()
+    };
+
+    return fetch(`/api/category/` + id, requestOptions).then(handleResponse);
+}
+
+function getCategoryPosts(id)
+{
+    const requestOptions = {
+        method: 'GET',
+        headers: authHeader()
+    };
+
+    return fetch(`/api/category/` + id + `/post`, requestOptions).then(handleResponse);
+}
+
+function getPosts()
+{
+    const requestOptions = {
+        method: 'GET',
+        headers: authHeader()
+    };
+
+    return fetch(`/api/post`, requestOptions).then(handleResponse);
+}
+
 function handleResponse(response) {
     return response.text().then(text => {
         const data = text && JSON.parse(text);
@@ -64,7 +108,6 @@ function handleResponse(response) {
             const error = (data && data.message) || response.statusText;
             return Promise.reject(error);
         }
-
         return data;
     });
 }
