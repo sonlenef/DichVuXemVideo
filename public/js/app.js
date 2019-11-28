@@ -74658,37 +74658,17 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(HomePage).call(this, props));
     _this.state = {
       user: {},
+      post: {},
+      posts: [],
+      postss: [],
       show_youtube_1: {},
-      show_youtube_2: {}
+      show_youtube_2: {},
+      video_id: ''
     };
     return _this;
   }
 
   _createClass(HomePage, [{
-    key: "see_youtube",
-    value: function see_youtube() {
-      this.setState({
-        show_youtube_2: false
-      });
-      this.state.show_youtube_1 ? this.setState({
-        show_youtube_1: false
-      }) : this.setState({
-        show_youtube_1: true
-      });
-    }
-  }, {
-    key: "see_youtube_2",
-    value: function see_youtube_2() {
-      this.setState({
-        show_youtube_1: false
-      });
-      this.state.show_youtube_2 ? this.setState({
-        show_youtube_2: false
-      }) : this.setState({
-        show_youtube_2: true
-      });
-    }
-  }, {
     key: "componentDidMount",
     value: function componentDidMount() {
       var _this2 = this;
@@ -74696,13 +74676,21 @@ function (_React$Component) {
       this.setState({
         user: {
           loading: true
+        },
+        posts: {
+          loading: true
+        },
+        postss: {
+          loading: true
         }
       });
       _services__WEBPACK_IMPORTED_MODULE_2__["userService"].getUser().then(function (user) {
         return _this2.setState({
           user: user
         });
-      });
+      }); // userService.getPosts().then(posts => this.setState({ posts }));
+
+      this.getPosts();
       this.setState({
         show_youtube_1: false
       });
@@ -74711,11 +74699,69 @@ function (_React$Component) {
       });
     }
   }, {
-    key: "render",
-    value: function render() {
+    key: "getPosts",
+    value: function getPosts() {
       var _this3 = this;
 
-      var user = this.state.user;
+      _services__WEBPACK_IMPORTED_MODULE_2__["userService"].getCategoryPosts(1).then(function (res) {
+        _this3.setState({
+          posts: Object.values(JSON.parse(JSON.stringify(res.data)))
+        });
+      })["catch"](function (err) {
+        console.log(err);
+      }); //
+
+      _services__WEBPACK_IMPORTED_MODULE_2__["userService"].getCategoryPosts(2).then(function (res) {
+        _this3.setState({
+          postss: Object.values(JSON.parse(JSON.stringify(res.data)))
+        });
+      })["catch"](function (err) {
+        console.log(err);
+      });
+    }
+  }, {
+    key: "see_youtube",
+    value: function see_youtube(video_id) {
+      this.setState({
+        show_youtube_2: false
+      });
+
+      if (!this.state.show_youtube_1) {
+        this.setState({
+          show_youtube_1: true
+        });
+      }
+
+      this.setState({
+        video_id: video_id
+      });
+    }
+  }, {
+    key: "see_youtube_2",
+    value: function see_youtube_2(video_id) {
+      this.setState({
+        show_youtube_1: false
+      });
+
+      if (!this.state.show_youtube_2) {
+        this.setState({
+          show_youtube_2: true
+        });
+      }
+
+      this.setState({
+        video_id: video_id
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this4 = this;
+
+      var _this$state = this.state,
+          user = _this$state.user,
+          posts = _this$state.posts,
+          postss = _this$state.postss;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
@@ -74768,9 +74814,9 @@ function (_React$Component) {
       }, "Next"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "post-title"
       }, "Acoustic"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "scroll-btn"
+        className: "scroll-btn"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "scroll-bar"
+        className: "scroll-bar"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "#body-acoustic"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null)))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
@@ -74780,52 +74826,20 @@ function (_React$Component) {
         className: "content-display"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "list-item"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+      }, posts.length && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "navbar-nav ml-auto"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: function onClick() {
-          return _this3.see_youtube();
-        }
-      }, "1 Ph\xFAt")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: function onClick() {
-          return _this3.see_youtube();
-        }
-      }, "N\u01B0\u1EDBc M\u1EAFt Em Lau B\u1EB1ng T\xECnh Y\xEAu M\u1EDBi")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: function onClick() {
-          return _this3.see_youtube();
-        }
-      }, "1 Ph\xFAt")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: function onClick() {
-          return _this3.see_youtube();
-        }
-      }, "N\u01B0\u1EDBc M\u1EAFt Em Lau B\u1EB1ng T\xECnh Y\xEAu M\u1EDBi")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: function onClick() {
-          return _this3.see_youtube();
-        }
-      }, "1 Ph\xFAt")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: function onClick() {
-          return _this3.see_youtube();
-        }
-      }, "N\u01B0\u1EDBc M\u1EAFt Em Lau B\u1EB1ng T\xECnh Y\xEAu M\u1EDBi")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: function onClick() {
-          return _this3.see_youtube();
-        }
-      }, "1 Ph\xFAt")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: function onClick() {
-          return _this3.see_youtube();
-        }
-      }, "N\u01B0\u1EDBc M\u1EAFt Em Lau B\u1EB1ng T\xECnh Y\xEAu M\u1EDBi")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: function onClick() {
-          return _this3.see_youtube();
-        }
-      }, "1 Ph\xFAt")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: function onClick() {
-          return _this3.see_youtube();
-        }
-      }, "N\u01B0\u1EDBc M\u1EAFt Em Lau B\u1EB1ng T\xECnh Y\xEAu M\u1EDBi")))), this.state.show_youtube_1 ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, posts.map(function (post, index) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          key: post.id
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          onClick: function onClick() {
+            return _this4.see_youtube(post.video_id);
+          }
+        }, post.name));
+      }))), this.state.show_youtube_1 ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "img-content"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_services_YouTubePlayer__WEBPACK_IMPORTED_MODULE_3__["YouTubePlayer"], {
-        videoId: "GQ4F9k4USfA"
+        videoId: this.state.video_id
       })) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "img-content",
         src: "/images/acoustic.jpg"
@@ -74847,9 +74861,9 @@ function (_React$Component) {
       }, "End"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "post-title"
       }, "Indie"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "scroll-btn"
+        className: "scroll-btn"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "scroll-bar"
+        className: "scroll-bar"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "#body-indie"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null)))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
@@ -74859,20 +74873,20 @@ function (_React$Component) {
         className: "content-display"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "list-item"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+      }, postss.length && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "navbar-nav ml-auto"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: function onClick() {
-          return _this3.see_youtube_2();
-        }
-      }, "1 Ph\xFAt")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: function onClick() {
-          return _this3.see_youtube_2();
-        }
-      }, "N\u01B0\u1EDBc M\u1EAFt Em Lau B\u1EB1ng T\xECnh Y\xEAu M\u1EDBi")))), this.state.show_youtube_2 ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, postss.map(function (post, index) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          key: post.id
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          onClick: function onClick() {
+            return _this4.see_youtube_2(post.video_id);
+          }
+        }, post.name));
+      }))), this.state.show_youtube_2 ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "img-content"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_services_YouTubePlayer__WEBPACK_IMPORTED_MODULE_3__["YouTubePlayer"], {
-        videoId: "EUEUZDV-in0"
+        videoId: this.state.video_id
       })) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "img-content",
         src: "/images/indie.jpg"
@@ -75307,7 +75321,11 @@ var TOKEN_KEY = 'jwt';
 var userService = {
   login: login,
   logout: logout,
-  getUser: getUser
+  getUser: getUser,
+  getAllCategory: getAllCategory,
+  getCategory: getCategory,
+  getCategoryPosts: getCategoryPosts,
+  getPosts: getPosts
 };
 
 function login(email, password) {
@@ -75352,6 +75370,38 @@ function getUser() {
     headers: Object(_helpers__WEBPACK_IMPORTED_MODULE_0__["authHeader"])()
   };
   return fetch("/api/auth", requestOptions).then(handleResponse);
+}
+
+function getAllCategory() {
+  var requestOptions = {
+    method: 'GET',
+    headers: Object(_helpers__WEBPACK_IMPORTED_MODULE_0__["authHeader"])()
+  };
+  return fetch("/api/category", requestOptions).then(handleResponse);
+}
+
+function getCategory(id) {
+  var requestOptions = {
+    method: 'GET',
+    headers: Object(_helpers__WEBPACK_IMPORTED_MODULE_0__["authHeader"])()
+  };
+  return fetch("/api/category/" + id, requestOptions).then(handleResponse);
+}
+
+function getCategoryPosts(id) {
+  var requestOptions = {
+    method: 'GET',
+    headers: Object(_helpers__WEBPACK_IMPORTED_MODULE_0__["authHeader"])()
+  };
+  return fetch("/api/category/" + id + "/post", requestOptions).then(handleResponse);
+}
+
+function getPosts() {
+  var requestOptions = {
+    method: 'GET',
+    headers: Object(_helpers__WEBPACK_IMPORTED_MODULE_0__["authHeader"])()
+  };
+  return fetch("/api/post", requestOptions).then(handleResponse);
 }
 
 function handleResponse(response) {

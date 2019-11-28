@@ -9,32 +9,62 @@ class HomePage extends React.Component {
 
         this.state = {
             user: {},
+            post: {},
+            posts: [],
+            postss: [],
             show_youtube_1: {},
-            show_youtube_2: {}
+            show_youtube_2: {},
+            video_id: ''
         };
-    }
-
-    see_youtube(){
-        this.setState({show_youtube_2: false});
-        this.state.show_youtube_1 ? this.setState({show_youtube_1: false}) : this.setState({show_youtube_1: true});
-    }
-
-    see_youtube_2(){
-        this.setState({show_youtube_1: false});
-        this.state.show_youtube_2 ? this.setState({show_youtube_2: false}) : this.setState({show_youtube_2: true});
     }
 
     componentDidMount() {
         this.setState({ 
-            user: { loading: true }
+            user: { loading: true },
+            posts: { loading: true },
+            postss: { loading: true }
         });
         userService.getUser().then(user => this.setState({ user }));
+        // userService.getPosts().then(posts => this.setState({ posts }));
+        this.getPosts();
         this.setState({show_youtube_1: false});
         this.setState({show_youtube_2: false});
     }
 
+    getPosts() {      
+        userService.getCategoryPosts(1)
+        .then((res) => {
+            this.setState({ posts: Object.values(JSON.parse(JSON.stringify(res.data)))});
+  
+         })   
+        .catch((err) => { console.log(err); });
+        //
+        userService.getCategoryPosts(2)
+        .then((res) => {
+            this.setState({ postss: Object.values(JSON.parse(JSON.stringify(res.data)))});
+  
+         })   
+        .catch((err) => { console.log(err); });
+    }
+
+    see_youtube(video_id){
+        this.setState({show_youtube_2: false});
+        if (!this.state.show_youtube_1) {
+            this.setState({show_youtube_1: true});
+        }
+        this.setState({video_id: video_id});
+    }
+
+    see_youtube_2(video_id){
+        this.setState({show_youtube_1: false});
+        if (!this.state.show_youtube_2) {
+            this.setState({show_youtube_2: true});
+        }
+        this.setState({video_id: video_id});
+    }
+
     render() {
-        const { user } = this.state;
+        const { user, posts, postss } = this.state;
         return (
             <div>
                 <div className="row">
@@ -69,8 +99,8 @@ class HomePage extends React.Component {
                                 <a href="#banner" className="btn prev">Prev</a>
                                 <a href="#indie" className="btn next">Next</a>
                                 <div className="post-title">Acoustic</div>
-                                <div class="scroll-btn">
-                                    <div class="scroll-bar">
+                                <div className="scroll-btn">
+                                    <div className="scroll-bar">
                                         <a href="#body-acoustic"><span></span></a>
                                     </div>
                                 </div>
@@ -79,21 +109,18 @@ class HomePage extends React.Component {
                         <section className="main-content" id="body-acoustic">
                             <div className="content-display">
                                 <div className="list-item">
+                                    {posts.length &&
                                     <ul className="navbar-nav ml-auto">
-                                        <li><button onClick={() => this.see_youtube()}>1 Phút</button></li>
-                                        <li><button onClick={() => this.see_youtube()}>Nước Mắt Em Lau Bằng Tình Yêu Mới</button></li>
-                                        <li><button onClick={() => this.see_youtube()}>1 Phút</button></li>
-                                        <li><button onClick={() => this.see_youtube()}>Nước Mắt Em Lau Bằng Tình Yêu Mới</button></li>
-                                        <li><button onClick={() => this.see_youtube()}>1 Phút</button></li>
-                                        <li><button onClick={() => this.see_youtube()}>Nước Mắt Em Lau Bằng Tình Yêu Mới</button></li>
-                                        <li><button onClick={() => this.see_youtube()}>1 Phút</button></li>
-                                        <li><button onClick={() => this.see_youtube()}>Nước Mắt Em Lau Bằng Tình Yêu Mới</button></li>
-                                        <li><button onClick={() => this.see_youtube()}>1 Phút</button></li>
-                                        <li><button onClick={() => this.see_youtube()}>Nước Mắt Em Lau Bằng Tình Yêu Mới</button></li>
+                                        {posts.map((post, index) =>
+                                            <li key={post.id}>
+                                                <button onClick={() => this.see_youtube(post.video_id)}>{post.name}</button>
+                                            </li>
+                                        )}
                                     </ul>
+                                    }
                                 </div>
                                 {this.state.show_youtube_1 ?
-                                    <div className="img-content"><YouTubePlayer videoId="GQ4F9k4USfA"/></div>
+                                    <div className="img-content"><YouTubePlayer videoId={this.state.video_id}/></div>
                                     :<img className="img-content" src="/images/acoustic.jpg"/>
                                 }
                             </div>
@@ -106,8 +133,8 @@ class HomePage extends React.Component {
                                 <a href="#acoustic" className="btn prev">Prev</a>
                                 <a href="#banner" className="btn next">End</a>
                                 <div className="post-title">Indie</div>
-                                <div class="scroll-btn">
-                                    <div class="scroll-bar">
+                                <div className="scroll-btn">
+                                    <div className="scroll-bar">
                                         <a href="#body-indie"><span></span></a>
                                     </div>
                                 </div>
@@ -116,13 +143,18 @@ class HomePage extends React.Component {
                         <section className="main-content" id="body-indie">
                             <div className="content-display">
                                 <div className="list-item">
+                                    {postss.length &&
                                     <ul className="navbar-nav ml-auto">
-                                        <li><button onClick={() => this.see_youtube_2()}>1 Phút</button></li>
-                                        <li><button onClick={() => this.see_youtube_2()}>Nước Mắt Em Lau Bằng Tình Yêu Mới</button></li>
+                                        {postss.map((post, index) =>
+                                            <li key={post.id}>
+                                                <button onClick={() => this.see_youtube_2(post.video_id)}>{post.name}</button>
+                                            </li>
+                                        )}
                                     </ul>
+                                    }
                                 </div>
                                 {this.state.show_youtube_2 ?
-                                    <div className="img-content"><YouTubePlayer videoId="EUEUZDV-in0"/></div>
+                                    <div className="img-content"><YouTubePlayer videoId={this.state.video_id}/></div>
                                     :<img className="img-content" src="/images/indie.jpg"/>
                                 }
                             </div>

@@ -320,3 +320,8 @@ section.blog-post .scroll-bar{
     padding: 10px;
 }
 
+.list-item ul li button:focus{
+    background: #ff0;
+    color: #000;
+}
+
