@@ -92,6 +92,10 @@
     margin-bottom: 8px;
 }
 
+.form-group-login a{
+    font-size: 12px;
+}
+
 .alert-login{
     position: relative;
     padding: 0.5rem 1rem;

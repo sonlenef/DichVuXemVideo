@@ -74535,6 +74535,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../_components */ "./resources/js/_components/index.js");
 /* harmony import */ var _HomePage__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../HomePage */ "./resources/js/HomePage/index.js");
 /* harmony import */ var _LoginPage__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../LoginPage */ "./resources/js/LoginPage/index.js");
+/* harmony import */ var _SignUpPage__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../SignUpPage */ "./resources/js/SignUpPage/index.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -74552,6 +74553,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -74580,6 +74582,9 @@ function (_React$Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
         path: "/login",
         component: _LoginPage__WEBPACK_IMPORTED_MODULE_4__["LoginPage"]
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+        path: "/signup",
+        component: _SignUpPage__WEBPACK_IMPORTED_MODULE_5__["SignUpPage"]
       }))));
     }
   }]);
@@ -75073,11 +75078,13 @@ function (_React$Component) {
         className: "login-loading"
       }, loading && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: "data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "/signup"
+      }, "Sign Up")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "box-error-login"
       }, error && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: 'alert-login alert-danger'
-      }, "Username or password is incorrect")))));
+      }, "Email or password is incorrect")))));
     }
   }]);
 
@@ -75099,6 +75106,208 @@ function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _LoginPage__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./LoginPage */ "./resources/js/LoginPage/LoginPage.jsx");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "LoginPage", function() { return _LoginPage__WEBPACK_IMPORTED_MODULE_0__["LoginPage"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/SignUpPage/SignUpPage.jsx":
+/*!************************************************!*\
+  !*** ./resources/js/SignUpPage/SignUpPage.jsx ***!
+  \************************************************/
+/*! exports provided: SignUpPage */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SignUpPage", function() { return SignUpPage; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../_services */ "./resources/js/_services/index.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+var SignUpPage =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(SignUpPage, _React$Component);
+
+  function SignUpPage(props) {
+    var _this;
+
+    _classCallCheck(this, SignUpPage);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(SignUpPage).call(this, props));
+    _services__WEBPACK_IMPORTED_MODULE_1__["userService"].logout();
+    _this.state = {
+      name: '',
+      email: '',
+      password: '',
+      submitted: false,
+      loading: false,
+      error: ''
+    };
+    _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(SignUpPage, [{
+    key: "handleChange",
+    value: function handleChange(e) {
+      var _e$target = e.target,
+          name = _e$target.name,
+          value = _e$target.value;
+      this.setState(_defineProperty({}, name, value));
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      var _this2 = this;
+
+      e.preventDefault();
+      this.setState({
+        submitted: true
+      });
+      var _this$state = this.state,
+          name = _this$state.name,
+          email = _this$state.email,
+          password = _this$state.password; // stop here if form is invalid
+
+      if (!(name && email && password)) {
+        return;
+      }
+
+      this.setState({
+        loading: true
+      });
+      _services__WEBPACK_IMPORTED_MODULE_1__["userService"].signup(name, email, password).then(function (user) {
+        var _ref = _this2.props.location.state || {
+          from: {
+            pathname: "/"
+          }
+        },
+            from = _ref.from;
+
+        _this2.props.history.push(from);
+      }, function (error) {
+        return _this2.setState({
+          error: error,
+          loading: false
+        });
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$state2 = this.state,
+          name = _this$state2.name,
+          email = _this$state2.email,
+          password = _this$state2.password,
+          submitted = _this$state2.submitted,
+          loading = _this$state2.loading,
+          error = _this$state2.error;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "login-page"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "boxLogin"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "SIGN UP"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        name: "form",
+        onSubmit: this.handleSubmit
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: 'form-group-login' + (submitted && !name ? ' has-error' : '')
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        className: "form-control",
+        name: "name",
+        placeholder: "Name",
+        value: name,
+        onChange: this.handleChange
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "box-error"
+      }, submitted && !name && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "help-block"
+      }, "Name is required"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: 'form-group-login' + (submitted && !email ? ' has-error' : '')
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        className: "form-control",
+        name: "email",
+        placeholder: "Email",
+        value: email,
+        onChange: this.handleChange
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "box-error"
+      }, submitted && !email && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "help-block"
+      }, "Email is required"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: 'form-group-login' + (submitted && !password ? ' has-error' : '')
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "password",
+        className: "form-control",
+        name: "password",
+        placeholder: "Password",
+        value: password,
+        onChange: this.handleChange
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "box-error"
+      }, submitted && !password && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "help-block"
+      }, "Password is required"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group-login"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-primary",
+        disabled: loading
+      }, "Sign Up"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "login-loading"
+      }, loading && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "box-error-login"
+      }, error && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: 'alert-login alert-danger'
+      }, error)))));
+    }
+  }]);
+
+  return SignUpPage;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+
+
+/***/ }),
+
+/***/ "./resources/js/SignUpPage/index.js":
+/*!******************************************!*\
+  !*** ./resources/js/SignUpPage/index.js ***!
+  \******************************************/
+/*! exports provided: SignUpPage */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _SignUpPage__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SignUpPage */ "./resources/js/SignUpPage/SignUpPage.jsx");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SignUpPage", function() { return _SignUpPage__WEBPACK_IMPORTED_MODULE_0__["SignUpPage"]; });
 
 
 
@@ -75319,6 +75528,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var TOKEN_KEY = 'jwt';
 var userService = {
+  signup: signup,
   login: login,
   logout: logout,
   getUser: getUser,
@@ -75327,6 +75537,23 @@ var userService = {
   getCategoryPosts: getCategoryPosts,
   getPosts: getPosts
 };
+
+function signup(name, email, password) {
+  var requestOptions = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      email: email,
+      name: name,
+      password: password
+    })
+  };
+  return fetch("/api/signup", requestOptions).then(handleResponse).then(function (data) {
+    return data;
+  });
+}
 
 function login(email, password) {
   var requestOptions = {
