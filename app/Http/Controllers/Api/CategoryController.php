@@ -84,7 +84,7 @@ class CategoryController extends Controller
 
     public function getCategoryPost($id)
     {
-        $post = Post::where("category_id", $id)->take(10)->get();
+        $post = Post::where("category_id", $id)->take(100)->get();
         return PostResource::collection($post);
     }
 

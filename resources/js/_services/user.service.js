@@ -2,6 +2,7 @@ import { authHeader } from '../_helpers';
 const TOKEN_KEY = 'jwt';
 
 export const userService = {
+    signup,
     login,
     logout,
     getUser,
@@ -10,6 +11,17 @@ export const userService = {
     getCategoryPosts,
     getPosts
 };
+
+function signup(name, email, password) {
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, name, password })
+    };
+    return fetch(`/api/signup`, requestOptions).then(handleResponse).then(data => {
+        return data;
+    });
+}
 
 function login(email, password) {
     const requestOptions = {
