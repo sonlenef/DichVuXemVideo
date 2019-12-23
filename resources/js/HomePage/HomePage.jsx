@@ -64,7 +64,7 @@ class HomePage extends React.Component {
     }
 
     render() {
-        const { user, posts, postss } = this.state;
+        const { user, posts, postss, isAdmin } = this.state;
         return (
             <div>
                 <div className="row">
@@ -73,9 +73,14 @@ class HomePage extends React.Component {
                             <a className="navbar-brand js-scroll-trigger" href="#">Dịch Vụ Xem Video</a>
                             <div className="collapse navbar-collapse" id="navbarResponsive">
                                 <ul className="navbar-nav ml-auto">
-                                    <li className="nav-item">
-                                        <a href="#" className="nav-link js-scroll-trigger">{user.name}</a>
-                                    </li>
+                                    {user.role == 'admin' ? 
+                                        <li className="nav-item">
+                                            <a href="/admin" className="nav-link js-scroll-trigger">{user.name}</a>
+                                        </li>: 
+                                        <li className="nav-item">
+                                            <a href="#" className="nav-link js-scroll-trigger">{user.name}</a>
+                                        </li>
+                                    }
                                     <li className="nav-item">
                                         <Link className="nav-link js-scroll-trigger" to={'/login'}>Logout</Link>
                                     </li>

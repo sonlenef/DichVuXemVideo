@@ -74519,6 +74519,290 @@ function coerce(val) {
 
 /***/ }),
 
+/***/ "./resources/js/AdminPage/AdminPage.jsx":
+/*!**********************************************!*\
+  !*** ./resources/js/AdminPage/AdminPage.jsx ***!
+  \**********************************************/
+/*! exports provided: AdminPage */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AdminPage", function() { return AdminPage; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../_services */ "./resources/js/_services/index.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+var AdminPage =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(AdminPage, _React$Component);
+
+  function AdminPage(props) {
+    var _this;
+
+    _classCallCheck(this, AdminPage);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(AdminPage).call(this, props));
+    _this.state = {
+      user: {},
+      title: '',
+      description: '',
+      video_id: '',
+      category_id: '',
+      submitted: false,
+      loading: false,
+      error: '',
+      category: {},
+      categories: []
+    };
+    _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(AdminPage, [{
+    key: "handleChange",
+    value: function handleChange(e) {
+      var _e$target = e.target,
+          name = _e$target.name,
+          value = _e$target.value;
+      this.setState(_defineProperty({}, name, value));
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      this.setState({
+        user: {
+          loading: true
+        },
+        category: {
+          loading: true
+        }
+      });
+      _services__WEBPACK_IMPORTED_MODULE_2__["userService"].getUser().then(function (user) {
+        return _this2.setState({
+          user: user
+        });
+      });
+      _services__WEBPACK_IMPORTED_MODULE_2__["userService"].getAllCategory().then(function (res) {
+        _this2.setState({
+          categories: Object.values(JSON.parse(JSON.stringify(res.data)))
+        });
+      })["catch"](function (err) {
+        console.log(err);
+      });
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      var _this3 = this;
+
+      e.preventDefault();
+      this.setState({
+        submitted: true
+      });
+      var _this$state = this.state,
+          title = _this$state.title,
+          description = _this$state.description,
+          video_id = _this$state.video_id,
+          category_id = _this$state.category_id; // stop here if form is invalid
+
+      if (!(title && video_id && category_id)) {
+        return;
+      }
+
+      this.setState({
+        loading: true
+      });
+      _services__WEBPACK_IMPORTED_MODULE_2__["userService"].addPost(title, description, video_id, category_id).then(function (category) {
+        var _ref = _this3.props.location.state || {
+          from: {
+            pathname: "/"
+          }
+        },
+            from = _ref.from;
+
+        _this3.props.history.push(from);
+      }, function (error) {
+        return _this3.setState({
+          error: error,
+          loading: false
+        });
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$state2 = this.state,
+          user = _this$state2.user,
+          title = _this$state2.title,
+          description = _this$state2.description,
+          video_id = _this$state2.video_id,
+          category_id = _this$state2.category_id,
+          submitted = _this$state2.submitted,
+          loading = _this$state2.loading,
+          error = _this$state2.error,
+          category = _this$state2.category,
+          categories = _this$state2.categories;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "row"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
+        className: "navbar navbar-expand-lg navbar-dark fixed-top shadow-sm",
+        id: "mainNav"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        className: "navbar-brand js-scroll-trigger",
+        href: "/"
+      }, "D\u1ECBch V\u1EE5 Xem Video"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "collapse navbar-collapse",
+        id: "navbarResponsive"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "navbar-nav ml-auto"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "nav-item"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "#",
+        className: "nav-link js-scroll-trigger"
+      }, user.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "nav-item"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        className: "nav-link js-scroll-trigger",
+        to: '/login'
+      }, "Logout"))))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "home-content"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+        className: "banner",
+        id: "banner"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "content"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-addvideo"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Th\xEAm Video"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        name: "form",
+        onSubmit: this.handleSubmit
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: 'form-group-add' + (submitted && !title ? ' has-error' : '')
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        className: "form-control",
+        name: "title",
+        placeholder: "Title",
+        value: title,
+        onChange: this.handleChange
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "box-error"
+      }, submitted && !title && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "help-block"
+      }, "Title is required"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: 'form-group-add' + (submitted && !description ? ' has-error' : '')
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        className: "form-control",
+        name: "description",
+        placeholder: "Description",
+        value: description,
+        onChange: this.handleChange
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "box-error"
+      }, submitted && !description && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "help-block"
+      }, "Description is required"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: 'form-group-add' + (submitted && !video_id ? ' has-error' : '')
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        className: "form-control",
+        name: "video_id",
+        placeholder: "VideoId",
+        value: video_id,
+        onChange: this.handleChange
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "box-error"
+      }, submitted && !video_id && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "help-block"
+      }, "Video's id is required"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group-add"
+      }, categories.length && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+        className: 'form-group-add' + (submitted && !category_id ? ' has-error' : ''),
+        name: "category_id",
+        value: category_id,
+        onChange: this.handleChange
+      }, categories.map(function (category) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+          key: category.id,
+          value: category.id
+        }, category.name);
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "box-error"
+      }, submitted && !video_id && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "help-block"
+      }, "Category's id is required"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group-add"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-primary",
+        disabled: loading
+      }, "Th\xEAm"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "login-loading"
+      }, loading && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "box-error-add"
+      }, error && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: 'alert-login alert-danger'
+      }, "L\u1ED7i")))))))));
+    }
+  }]);
+
+  return AdminPage;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+
+
+/***/ }),
+
+/***/ "./resources/js/AdminPage/index.js":
+/*!*****************************************!*\
+  !*** ./resources/js/AdminPage/index.js ***!
+  \*****************************************/
+/*! exports provided: AdminPage */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _AdminPage__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AdminPage */ "./resources/js/AdminPage/AdminPage.jsx");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "AdminPage", function() { return _AdminPage__WEBPACK_IMPORTED_MODULE_0__["AdminPage"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/App/App.jsx":
 /*!**********************************!*\
   !*** ./resources/js/App/App.jsx ***!
@@ -74536,6 +74820,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _HomePage__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../HomePage */ "./resources/js/HomePage/index.js");
 /* harmony import */ var _LoginPage__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../LoginPage */ "./resources/js/LoginPage/index.js");
 /* harmony import */ var _SignUpPage__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../SignUpPage */ "./resources/js/SignUpPage/index.js");
+/* harmony import */ var _AdminPage__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../AdminPage */ "./resources/js/AdminPage/index.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -74553,6 +74838,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -74585,6 +74871,9 @@ function (_React$Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
         path: "/signup",
         component: _SignUpPage__WEBPACK_IMPORTED_MODULE_5__["SignUpPage"]
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components__WEBPACK_IMPORTED_MODULE_2__["PrivateRoute"], {
+        path: "/admin",
+        component: _AdminPage__WEBPACK_IMPORTED_MODULE_6__["AdminPage"]
       }))));
     }
   }]);
@@ -74766,7 +75055,8 @@ function (_React$Component) {
       var _this$state = this.state,
           user = _this$state.user,
           posts = _this$state.posts,
-          postss = _this$state.postss;
+          postss = _this$state.postss,
+          isAdmin = _this$state.isAdmin;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
@@ -74782,7 +75072,12 @@ function (_React$Component) {
         id: "navbarResponsive"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "navbar-nav ml-auto"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+      }, user.role == 'admin' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "nav-item"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "/admin",
+        className: "nav-link js-scroll-trigger"
+      }, user.name)) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "nav-item"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "#",
@@ -75001,8 +75296,7 @@ function (_React$Component) {
       });
       var _this$state = this.state,
           email = _this$state.email,
-          password = _this$state.password,
-          returnUrl = _this$state.returnUrl; // stop here if form is invalid
+          password = _this$state.password; // stop here if form is invalid
 
       if (!(email && password)) {
         return;
@@ -75326,13 +75620,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../_services */ "./resources/js/_services/index.js");
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
 
 
 
@@ -75389,6 +75681,7 @@ function authHeader() {
 
   if (data.token) {
     return {
+      'content-type': 'application/json',
       'Content-Type': 'application/x-www-form-urlencoded',
       'Authorization': 'Bearer ' + data.token
     };
@@ -75535,7 +75828,8 @@ var userService = {
   getAllCategory: getAllCategory,
   getCategory: getCategory,
   getCategoryPosts: getCategoryPosts,
-  getPosts: getPosts
+  getPosts: getPosts,
+  addPost: addPost
 };
 
 function signup(name, email, password) {
@@ -75629,6 +75923,22 @@ function getPosts() {
     headers: Object(_helpers__WEBPACK_IMPORTED_MODULE_0__["authHeader"])()
   };
   return fetch("/api/post", requestOptions).then(handleResponse);
+}
+
+function addPost(name, description, video_id, category_id) {
+  var requestOptions = {
+    method: 'POST',
+    headers: Object(_helpers__WEBPACK_IMPORTED_MODULE_0__["authHeader"])(),
+    body: JSON.stringify({
+      name: name,
+      description: description,
+      video_id: video_id,
+      category_id: category_id
+    })
+  };
+  return fetch("/api/category/" + category_id + "/post", requestOptions).then(handleResponse).then(function (data) {
+    return data;
+  });
 }
 
 function handleResponse(response) {

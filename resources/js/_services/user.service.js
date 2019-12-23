@@ -9,7 +9,8 @@ export const userService = {
     getAllCategory,
     getCategory,
     getCategoryPosts,
-    getPosts
+    getPosts,
+    addPost
 };
 
 function signup(name, email, password) {
@@ -105,6 +106,18 @@ function getPosts()
     };
 
     return fetch(`/api/post`, requestOptions).then(handleResponse);
+}
+
+function addPost(name, description, video_id, category_id) 
+{
+    const requestOptions = {
+        method: 'POST',
+        headers: authHeader(),
+        body: JSON.stringify({ name, description, video_id, category_id })
+    };
+    return fetch(`/api/category/` + category_id + `/post`, requestOptions).then(handleResponse).then(data => {
+        return data;
+    });
 }
 
 function handleResponse(response) {
