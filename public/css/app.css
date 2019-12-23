@@ -356,6 +356,41 @@ section.blog-post .scroll-bar{
     color: #000;
 }
 
+.form-addvideo {
+    padding: 30px 20px 0 20px;
+    width: 400px;
+    border-radius: 5px;
+    box-shadow: rgba(0,0,0,0.2) 0px 1px 3px;
+    background: rgba(0, 0, 0, 0.7);
+}
+.form-addvideo h2{
+    font-family: Comic Sans MS;
+    color: rgba(360, 360, 360, 0.9);
+    text-transform: uppercase;
+    font-weight: 500;
+    padding-bottom: 30px;
+}
+
+.form-group-add {
+    margin-bottom: 8px;
+}
+
+.form-group-add a{
+    font-size: 12px;
+}
+
+.form-group-add button {
+    margin: 10px;
+}
+
+.form-group-add select{
+    width: 200px;
+    padding: 10px 10px;
+}
+
+.box-error-add {
+    height: 50px;
+}
 @charset "UTF-8";
 
 /*!

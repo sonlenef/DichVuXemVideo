@@ -20,4 +20,6 @@ Route::get('/login', function () {
 Route::get('/signup', function () {
     return view('welcome');
 });
-
+Route::get('/admin', function () {
+    return view('welcome');
+});
